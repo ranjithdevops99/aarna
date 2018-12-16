@@ -65,10 +65,10 @@
     </pluginManagement>
   </build>
    
-  <distributionManagement>
+ <distributionManagement>
   <snapshotRepository>
-    <id>snapshot</id>
-    <url>http://localhost:8085/nexus/content/repositories/snapshot</url>
+    <id>Snapshot</id>
+    <url>http://localhost:8085/nexus/content/repositories/Snapshot</url>
   </snapshotRepository>
 </distributionManagement>
   
