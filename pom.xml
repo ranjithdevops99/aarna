@@ -66,10 +66,10 @@
   </build>
    
  <distributionManagement>
-  <snapshotRepository>
-    <id>Snapshot</id>
-    <url>http://localhost:8085/nexus/content/repositories/Snapshot</url>
-  </snapshotRepository>
+  <repository>
+    <id>releases</id>
+    <url>http://localhost:8085/nexus/content/repositories/releases</url>
+  </repository>
 </distributionManagement>
   
 </project>
