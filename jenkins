@@ -36,4 +36,6 @@ source ~/.bash_profile
   JENKINS master slave configuraton
   https://www.youtube.com/watch?v=hwrYURP4O2k&list=PLxzKY3wu0_FI7NMsx6_iyDC6adqaE12OU&index=8
   .................................................................................
-  
+  how to set private credentials for tomcat 
+  >go to credentials>global >ADD Credentials
+  ...........................................................................................
