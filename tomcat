@@ -1,0 +1,29 @@
+#installation tomcat 
+https://tomcat.apache.org/download-80.cgi
+cd /opt 
+tar.gz (pgp, sha512)copy link
+tar -xvzf apachetomcat 
+
+#to link tomcat service 
+ln -s /opt/apache-tomcat-8.5.37/bin/startup.sh /usr/local/bin/tomcatup
+ ln -s /opt/apache-tomcat-8.5.37/bin/startup.sh /usr/local/bin/tomcatdown
+ #to start tomcat 
+ tomcatup
+ #to check running 
+ ps -ef |grep tomcat 
+ #contextpath
+ find / -name context.xml
+ 
+/opt/apache-tomcat-8.5.37/webapps/host-manager/META-INF/context.xml
+<! comment valv -->
+/opt/apache-tomcat-8.5.37/webapps/manager/META-INF/context.xml
+<! comment valv -->
+./shutdown.sh 
+./startup.sh
+--------------------------------------------------------------------------------------
+conf /tomcatusers.xml
+
+roles 
+<role rolename="manager-gui"/>
+<user username="tomcat" password="tomcat" roles="manager-gui"/>
+
