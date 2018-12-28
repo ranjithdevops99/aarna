@@ -38,4 +38,18 @@ source ~/.bash_profile
   .................................................................................
   how to set private credentials for tomcat 
   >go to credentials>global >ADD Credentials
-  ...........................................................................................
+  ..........................................00.................................................
+  #backups in jenkins
+  install Thinbackup plugin
+  #create a directory backup and give permissions to directory
+  mkdir backup
+  chown -R jenkins:jenkins backup
+  ls -la 
+  > go to thinbackup 
+  >settings >/tmp/backup (paste it)
+  click backkup now= All the file wil place on back up folder 
+  #Restore 
+  from thinbackup plugin we can restore it 
+  .........................................................................
+  
+  
