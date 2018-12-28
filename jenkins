@@ -26,6 +26,8 @@ source ~/.bash_profile
   #To check JAVA path 
   echo $JAVA_HOME
   /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64
+  #To set maven path
+  /opt/maven/apache-maven-3.6.0
   .........................................................................
   #How to create users in jenkins 
   Manage jenkins > Manage Users 
