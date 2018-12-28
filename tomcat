@@ -23,7 +23,4 @@ ln -s /opt/apache-tomcat-8.5.37/bin/startup.sh /usr/local/bin/tomcatup
 --------------------------------------------------------------------------------------
 conf /tomcatusers.xml
 
-roles 
-<role rolename="manager-gui"/>
-<user username="tomcat" password="tomcat" roles="manager-gui"/>
-
+<user username="tomcat" password="tomcat" roles="manager-gui,manager-script"/>
