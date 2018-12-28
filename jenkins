@@ -1,0 +1,37 @@
+https://www.youtube.com/watch?v=jZOqcB32dYM&index=6&list=PLxzKY3wu0_FI7NMsx6_iyDC6adqaE12OU
+
+#install java 
+yum install java-1.8*
+#set java path 
+find /usr/lib/jvm/java-1.8* | head -n 3
+
+#go to vi 
+#paste in bash_profile
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64
+PATH=$PATH:$JAVA_HOME:$HOME/bin
+
+#to save bash profile permanent 
+source ~/.bash_profile
+#To check java path set or not 
+ echo $JAVA_HOME
+ ..............................................................
+ jenkins Installation : IN centos : https://pkg.jenkins.io/redhat-stable/(jenkins website)
+ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+ yum install jenkins
+ systemctl start jenkins
+  cat /var/lib/jenkins/secrets/initialAdminPassword
+  
+  > set path s in jenkins > global tool configuration
+  #To check JAVA path 
+  echo $JAVA_HOME
+  /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64
+  .........................................................................
+  #How to create users in jenkins 
+  Manage jenkins > Manage Users 
+  install "Role based authorization plugin" 
+  .............................................................................
+  JENKINS master slave configuraton
+  https://www.youtube.com/watch?v=hwrYURP4O2k&list=PLxzKY3wu0_FI7NMsx6_iyDC6adqaE12OU&index=8
+  .................................................................................
+  
