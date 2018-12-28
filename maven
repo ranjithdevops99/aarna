@@ -1,0 +1,32 @@
+#maven installation
+/opt/mkdir maven 
+#copy link  
+	apache-maven-3.6.0-bin.tar.gz
+  #Extract 
+  tar -xvzf apache-maven-3.6.0-bin.tar.gz
+  apache-maven-3.6.0
+  mvn -version 
+  
+  "Apache Maven 3.0.5 (Red Hat 3.0.5-17)
+Maven home: /usr/share/maven
+Java version: 1.8.0_191, vendor: Oracle Corporation
+Java home: /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "4.14.77-86.82.amzn2.x86_64", arch: "amd64", family: "unix" "
+..............................................................................................................
+#To set path 
+[root@ip-10-1-1-122 apache-tomcat-8.5.37]# pwd
+/opt/apache-tomcat-8.5.37
+cd /root
+ls -la 
+vi ./bash_profile
+JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64
+M2_HOME=/opt/maven/apache-maven-3.6.0 ......
+M2=$M2_HOME/bin ........
+PATH=$PATH:$JAVA_HOME:$M2_HOME:$M2:$HOME/bin
+#Relogin the system 
+echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64:/opt/maven/apache-maven-3.6.0:/opt/maven/apache-maven-3.6.0/bin:/root/bin
+
+
+
