@@ -12,3 +12,16 @@
 ........................................................................................
 
 #https://download.sonatype.com/nexus/nexus-professional-bundle-latest.tar.gz
+nexus-professional-2.14.11-01 | sonatype-work  
+it is asoftware               | it is repository file system stored
+#cd nexus-professional-2.14.11-01 / bin /nexus 
+./nexus start
+#to chane application port go to nexus-professional-2.14.11-01
+ls
+>etc / nexus-default.properties 
+appicaton port=8081
+access the browse 32.123.12:8081
+login :admin
+pwd:admin123
+...........................................................................................
+#Repo for maven in  
