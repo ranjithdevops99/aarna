@@ -20,5 +20,19 @@ Default port =9000
 >cd conf> more sonar.properties
 #to check sonar running 
 ./sonar.sh status
-#
+http://3.86.27.226:9000
+.........................................................................................
+sonar scanner :
+>unzip sonar-scanner-cli-3.2.0.1227-linux.zip
+>ls  ,> bin  conf  jre  lib ,>cd bin /ls :sonar-scanner  sonar-scanner-debug
+> pwd :/opt/scanner/bin
+sonarscanner path :/opt/scanner/bin/sonar-scanner (it will run where your proerties files has been there)
+# go to source code sonar properties file & run 
+cd sonarsrc
+ls
+compiled  README.md  sonar-project.properties  src  validation.txt
+#run this command
+/opt/scanner/bin/sonar-scanner
+
+
 
