@@ -1,0 +1,24 @@
+#what is sonarqube ?
+It is open platform to Manage code quality 
+#static code analysis :
+set of rules which run on the code and it will give the reports stored over sonarqube 
+generate the quality reports every day. 
+......................................................................................
+#sonar qube works as 3 elements we need it
+sonarqube server which has  :DB, DASHBOARD ,RULES(checkfiels,yuma ,Finebugs etc)
+scaneer   :
+source code : Proerties file
+...................................................................................
+set up sonarqube in aws
+cd /opt
+> wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-6.7.6.zip
+> unzip sonarqube-6.7.6.zip
+>cd sonarqube-6.7.6 > cd 
+>cd sonarqube-6.7.6 > cd sonarqube-6.7.6>cd bin>linux-x86-64 >./sonar.sh start
+# To change port 
+Default port =9000
+>cd conf> more sonar.properties
+#to check sonar running 
+./sonar.sh status
+#
+
