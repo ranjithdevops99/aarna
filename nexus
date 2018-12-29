@@ -1,0 +1,14 @@
+#nexus 
+#types of private repo management system
+>/ nexus ,artifact,archiva ,nuget.
+#why we use it 
+1.organize the package in process oreinted manner on demand
+2.security is more 
+3.pacakge integrity 
+4.process driven appproach and standard layout
+5.Backup and restore mechanism
+6.admin ativity iss done 
+7.24/7 availabity 
+........................................................................................
+
+#https://download.sonatype.com/nexus/nexus-professional-bundle-latest.tar.gz
