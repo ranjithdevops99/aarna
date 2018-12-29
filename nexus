@@ -24,4 +24,8 @@ access the browse 32.123.12:8081
 login :admin
 pwd:admin123
 ...........................................................................................
-#Repo for maven in  
+#kind of repo maven in nexus
+Hosted :read ,write
+Relaese & Snapshots 
+Proxy :Read
+Group : N no of Hosted + proxy
