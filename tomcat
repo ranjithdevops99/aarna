@@ -1,5 +1,7 @@
 #installation tomcat 
 https://tomcat.apache.org/download-80.cgi
+#take binary distrinbutions core 
+tar.gz (pgp, sha512)
 cd /opt 
 tar.gz (pgp, sha512)copy link
 tar -xvzf apachetomcat 
