@@ -1,2 +1,8 @@
-#to see size of the pacakge 
+1.to see size of the pacakge 
   104M   du -sh nexus-professional-bundle-latest.tar.gz
+2 .How to set hostname 
+  hostnamectl set-hostname your-new-hostname
+  hostnamectl
+  /bin/bash
+3.  
+  
