@@ -1,0 +1,67 @@
+#to see runninng containers
+docker container ls 
+#to enter container
+docker exec -it 42ab3955dfa8 /bin/bash
+Docker 
+Installation in centos :
+Installation
+https://www.devopsschool.com/tutorial/docker/docker-install-commuityedition-centos-rhel.html
+
+#remove docker
+$ sudo yum remove docker 
+$ sudo yum remove docker docker-client 
+$ sudo yum remove docker docker-client-latest 
+$ sudo yum remove docker docker-common
+$ sudo yum remove docker docker-latest 
+$ sudo yum remove docker docker-latest-logrotate
+$ sudo yum remove docker docker-logrotate 
+$ sudo yum remove docker docker-selinux 
+$ sudo yum remove docker docker-engine-selinux
+$ sudo yum remove docker docker-engine
+
+#How to install Docker Community Edition via YUM?
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+
+#Step 2 - Use the following command to set up the stable repository
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+
+#step 3 - Install the latest version of Docker CE
+
+$ sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+$ sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+$ sudo yum install -y docker-ce
+$ sudo yum install docker-ce
+
+# Verify Docker Installations
+$ docker -v
+
+Step 4 - Enable Docker
+$ sudo systemctl enable docker
+
+Step 5 - Start Docker
+$ sudo systemctl start docker
+$ docker info
+..................................................................................................................
+https://www.devopsschool.com/notes/docker/2018/Nokia-Batch1-March-2018.txt (notes)
+...........................................................................................................
+Docker commands : Docker File :
+docker run -d --name tomcatserver or imageid -p 8081:8080 tomcat:8.0
+docker run -d -p 8081:8080 aa5709f2ee17
+docker exec -it tomcatserver /bin/bash
+pwd
+….…………………………………………………………………………………………………………
+FROM tomcat:8.0
+
+MAINTAINER rajith.b@atmecs.com
+
+ADD ./target/financeaarna.war /usr/local/tomcat/webapps/
+….……………………………………………………………………………………………………………..
+In jenkins
+> IN execute shell command 
+sudo docker build -t samplehelloworld .
+.........................................................
+Docker file 
+FROM tomcat
+COPY target/helloworld.war /usr/local/tomcat/webapps/
+EXPOSE 8080
+#docker build -t imagename:version .
