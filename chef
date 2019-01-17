@@ -1,0 +1,155 @@
+-https://www.edureka.co/blog/install-chef/
+-NTP server link 
+-https://www.hugeserver.com/kb/config-time-date-centos-7-ntp/
+-tutorial
+https://www.youtube.com/watch?v=3EAh3MU-0TY
+1.Chef has three major components:
+chef Workstation
+chef Server
+chef Nodes
+2. 
+Install Chef DK (Development Kit) on Chef Workstation
+Setup a Chef Server
+Create a Recipe or a Cookbook / download a Cookbook from Chef Supermarket in Workstation
+Upload a Cookbook on the Chef Server
+Connect A Node To The Chef Server
+Deploy the Cookbook from the Server to the Node
+3. create a organization 
+> go to 
+https://manage.chef.io/
+>create a organization
+Download chef starter kit 
+chef-starter.zip
+use winscp to transfer file to linux box  
+> check the connection 
+  knife node list
+4.https://downloads.chef.io/chefdk/ 
+   #wget https://packages.chef.io/files/stable/chefdk/3.6.57/el/7/chefdk-3.6.57-1.el7.x86_64.rpm
+   #rpm -ivh chefdk-3.6.57-1.el7.x86_64.rpm
+   >whether service is able to connect verify ?
+   #knife node list
+   #knife cookbook list
+5.# to set up the server below are we have to follow
+> A:fully qualify domain name 
+ #vim  /etc/hostname
+ #chef.abcc.com
+  #hostname
+  # init 6  (reboot)
+> B :firwall disable
+> C : se -linux disable 
+
+6. >generate cookbook
+#chef generate cookbook web
+>go to web 
+ls
+>Recipes
+>write a ruby file 
+#vi default.rb
+package "httpd"
+service "httpd" do
+         action :start
+end
+
+7 .> upload web in chef servers
+ #knife cookbook upload web 
+
+8. >Establish the NODES connection (Establish the Nodes in chef & chefnode)
+vi /etc/hosts 
+192.168.56.105 chefserver.example.com chef
+192.168.56.106 chefnodeserver.example.com chefnode
+ping chef
+pingnode
+
+9. >check iptables
+  #iptables -L
+
+10 write  a apache package  to test in yor local 
+  create a recepie
+
+    package'httpd' do
+    service 'httpd' do
+             action [:enable, :start]
+     end
+     file 'var/www/html/index.html'do
+           content '<html> 
+            </body> 
+                   <h1>Hello World!</h1>
+             </body>
+            </html>'
+          end
+
+11  > create a cook book 
+     > mkdir cookbookworks
+     # chef generate cookbook httpd
+     type # tree 
+    place a template in httpd called index.html  
+    # chef generate template httpd index.html
+     type # tree
+    > create a file in /opt/cookbooksworks/httpd/recipes vi hello.rb
+    package 'httpd' 
+    service 'httpd' do
+             action [:enable, :start]
+     end
+     tempalte 'var/www/html/index.html' do
+               source 'index.html.erb'
+      end  
+
+12
+ create a cookbook
+> go to recipes > default.rb >
+ vi default.rb
+package 'httpd' 
+service 'httpd' do
+        action [:enable, :start]
+     end
+     file 'var/www/html/index.html' do
+      content '<html>body bgcolor="red"><h1>hello welcome to ATMECS </h1></body></html>'
+     end
+
+#cookbook is capable of httpd deployment
+#using chef apply recipe.rb
+Run the coomand in cookbooks folder (apply on local only )
+> sudo chef-client --local-mode --runlist 'recipe[samplehttpd]'
+# make sure the file should be writen in default.rb file  
+
+If we want to execute one more recipe 
+touch abc.rb 
+sample httpd::abc.rb 
+
+13
+ upload a cookbook to chef server
+  > sudo knife cookbook upload samplehttpd   
+
+14 
+Now deploy cookbook samplehttpd to chefnode through chefremote 
+Execute the command 
+> knife bootstrap 192.168.56.107 --ssh-user root --ssh-password 'centos ' --sudo --use-sudo-password --node-name chefnode --run-list 'recipe[samplehttpd]'
+
+15
+ # to create a template use this command
+    go to default.rb and paste it
+   
+package 'httpd'
+service 'httpd' do
+        action [:enable, :start]
+end
+
+template 'var/www/html/index.html'do
+       source 'index.html.erb'
+ end
+
+  #after that create a template directory 
+  In template create 
+ >vi.index.html.erb
+  # paste the html content and run 
+>  sudo knife cookbook upload samplehttpd  
+>  knife bootstrap 192.168.56.107 --ssh-user root --ssh-password 'centos ' --sudo --use-sudo-password --node-name chefnode --run-list 'recipe[samplehttpd]'
+
+16 
+if any vesion we want to downlaod go to 
+#chef supefr market
+> knife cookbook site downlaod java 
+#after downlaod 
+>knife cookbook upload java  
+
+
