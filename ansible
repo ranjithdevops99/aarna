@@ -1,0 +1,135 @@
+ansible install on aws
+
+1.install ansible master and node
+
+2.create a user 
+  > useradd ranjith
+  > passwd ranjith
+
+3.#goto sodo file
+and add username 
+>ranjith ALL=(ALL)  NOPASSWD: ALL
+
+4.vi  /etc/ssh/sshd_config
+ > uncomment passwordauthentication yes 
+ > service sshd restart
+
+5.  #in master 
+   >ssh-keygen 
+   >ls -la 
+   > cd .ssh 
+   > ssh-copy-id nodeip
+   > ssh node {to check the connection}
+
+6.#In master 
+  goto vi /etc/ansible/hosts
+  [appserver]
+   ipdadd
+  [dbserver]
+   ipadd
+  > ansible all -m ping
+  > ansible appserver -m ping 
+
+7. to send a file in client servers 
+ > create a html file 
+ > ansible all -m copy -a "src=/home/ranjith/hello.html dest=/home/ranjith/hello.html"
+ # create a httpd pacakge in node from master 
+   > ansible -s all -m yum -a "name=httpd state=latest"
+   > service httpd status
+   > ansible -s all -m service -a "name=httpd state=started"
+   ...............................................................................................................................
+   tutorials :
+https://www.youtube.com/watch?v=CvnfzTnpASo
+..............................................................
+
+
+ansible : Configuration management tool
+ It uses playbooks to  deploy manage,build,test and configure from full server environments to websites to custom compiled source code for applications  
+
+Lab setup
+ansiblemaster
+ansiblenode
+
+Ansible software is avaialbe on EPEL repo
+
+Ansible control account 
+username:ansadmin
+Group :ansadm
+Role :Ansible Admin User 
+...............................................................
+#Before Installing ansible create a user on both master & Node 
+#we need to allow this user to run sudo commands without enetring the password 
+> useradd ranjith
+>passwd ranjith
+>go to visudo
+>In /root - ranjith  ALL=(ALL) NOPASSWD: ALL
+#lets ssh to our client machine 
+ssh root@nodename  and give username etc as master 
+>> useradd ranjith
+>passwd ranjith
+>go to visudo
+>In /root - ranjith  ALL=(ALL) NOPASSWD: ALL
+......................................................................
+#SO users are created so esatabilsh the connection
+> ssh root@ansiblemaster
+> su ranjith --login
+>ssh-keygen 
+>ssh-copy-id ranjith@ansiblenode 
+>ssh-copy-id ranjith@ansiblemaster
+# Lets perform similar tasks to node machine too 
+same as above 
+.................................................................
+Now Insatll ansible :
+sudo yum install -y epel-release
+sudo yum install -y ansible
+..............................................................
+rpm -qa |grep ansible 
+/etc/ansible
+/etc/ansible/ansible.cfg
+/etc/ansible/hosts
+/etc/ansible/roles
+................................................................
+2 .Ansible Adhoc commands 
+ansible inventory file 
+#ansible vi /etc/ansible /hosts
+[appgroup]
+appserver
+
+[dbgroup]
+dbserver
+
+ansible configuration file 
+vi /etc/ansible/ansible.cfg
+...............................................................
+#ansible work on modules
+how many modules to see 
+>ansible doc-l |more
+
+#to check available servers on app group
+>ansible appgroup -m ping 
+>ansible all -m ping
+>ansible dbgroup -m ping
+#To check the informations on remote servers 
+>ansible all -m shell -a "uname -a;df -h"
+
+Insatall httpd package on appserver
+> ansible  appgroup -m yum -a "name=httpd state=present" -s
+to check in appserver
+rpm -qa | grep httpd
+.................................................................
+3.  playbooks :
+
+vi install.yml
+---
+- hosts: dbserver
+  tasks: 
+  - name: Install a httpd pkg
+    yum: name=httpd state=latest
+  - name: start a httpd service 
+    service: name=httpd state=restarted 
+
+# check the playbook synatax is correct or not 
+>ansible-playbook install.yml --syntax-check
+
+   
+   
