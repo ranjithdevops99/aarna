@@ -4,5 +4,11 @@
   hostnamectl set-hostname your-new-hostname
   hostnamectl
   /bin/bash
-3.  
+3. Information about the processors
+  >cat /proc/cpuinfo
+  >cat /proc/cpuinfo |grep proc
+4. which kernel you are 
+  >uname -a
+5.  
+
   
