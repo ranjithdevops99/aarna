@@ -1,2 +1,7 @@
 http://blog.kevintijssen.eu/how-to-install-kubernetes-on-centos-7/
-First we need to disable Selinx and FirewallD
+http://wrightrocket.blogspot.com/2017/11/installing-kubernetes-on-centos-7-with.html
+
+>First we need to disable Selinx and FirewallD
+#atlast in install
+> kubeadm reset
+>kubeadm init --pod-network-cidr 10.244.0.0/16 --ignore-preflight-errors=all
