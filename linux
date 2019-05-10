@@ -9,6 +9,7 @@
   >cat /proc/cpuinfo |grep proc
 4. which kernel you are 
   >uname -a
-5.  
+5.  create a mutiple direrctories at a time 
+   > mkdir /src/gitporjects -p
 
   
