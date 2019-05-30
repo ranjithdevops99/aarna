@@ -1,0 +1,17 @@
+Install java jdk
+https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html
+Install git-tfs
+https://git-tfs.com/
+
+   #click  environmental variables 
+     > go to user variable and copy below lines
+     java_home 
+     C:\Program Files\Java\jdk-12.0.1
+     #now go to system variables and click in path and add below link
+       C:\Users\User\Downloads\GitTfs-0.30.0
+        and use 
+       git-tfs to verify the installation properly
+       
+       
+     
+     
