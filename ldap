@@ -1,0 +1,15 @@
+leight weight directory access protocol 
+portno:389
+ldap : all the user name and passwords in one server ,going to maintain in one cental location.we configure the rest of 100 systemsfrom the central machines
+Domain is logical grouping of all machines maintian the all user name and pssword in one location that can be shared to all clinet machines.
+we can also called as client sever technolgy.
+
+https://www.youtube.com/watch?v=aDAN9Yghp9g
+Prerequesties - 2 linux machines
+
+
+
+Install required ldap packages "openldap".It will install all the openldap components
+
+>yum -y install openldap*
+
