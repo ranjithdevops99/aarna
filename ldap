@@ -11,5 +11,6 @@ Prerequesties - 2 linux machines
 
 Install required ldap packages "openldap".It will install all the openldap components
 
+>
 >yum -y install openldap*
 
