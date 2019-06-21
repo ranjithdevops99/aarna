@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hi welcome to CHS!</h2>
+<h2>Hi welcome to ATMECS!</h2>
 </body>
 </html>
