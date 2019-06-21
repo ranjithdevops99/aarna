@@ -1,6 +1,10 @@
 http://blog.kevintijssen.eu/how-to-install-kubernetes-on-centos-7/
 http://wrightrocket.blogspot.com/2017/11/installing-kubernetes-on-centos-7-with.html
 
+https://www.linuxtechi.com/install-kubernetes-1-7-centos7-rhel7/
+
+
+
 >First we need to disable Selinx and FirewallD
 #atlast in install
 > kubeadm reset
