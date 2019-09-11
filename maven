@@ -16,6 +16,11 @@ source .bash_profile
   apache-maven-3.6.0
   mvn -version 
   
+  OR 
+  FOLLOW THE LINK FOR SETUP THE ENV VARIABLES IN MAVEN 
+  https://linuxize.com/post/how-to-install-apache-maven-on-centos-7/
+  
+  
   "Apache Maven 3.0.5 (Red Hat 3.0.5-17)
 Maven home: /usr/share/maven
 Java version: 1.8.0_191, vendor: Oracle Corporation
