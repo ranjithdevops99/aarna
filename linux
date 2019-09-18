@@ -18,4 +18,7 @@ https://www.unixmen.com/reset-root-password-centos-7/
 5.  create a mutiple direrctories at a time 
    > mkdir /src/gitporjects -p
 
-  
+6. to check the internet connection in vm
+    vim /etc/sysconfig/network-scripts/ifcfg-ens33
+    vim /etc/resolv.conf
+    
