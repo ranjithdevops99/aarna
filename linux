@@ -21,4 +21,9 @@ https://www.unixmen.com/reset-root-password-centos-7/
 6. to check the internet connection in vm
     vim /etc/sysconfig/network-scripts/ifcfg-ens33
     vim /etc/resolv.conf
-    
+7. in which port service  is running
+   neststat -tulpn| grep tomcat 
+   ps -aux  
+8. details of memory utilization,cpu etc   
+    top 
+9.
