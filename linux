@@ -26,4 +26,5 @@ https://www.unixmen.com/reset-root-password-centos-7/
    ps -aux  
 8. details of memory utilization,cpu etc   
     top 
-9.
+9. port has been block firewall for oustide to communicate
+  service firewalld stop
