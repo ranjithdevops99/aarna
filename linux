@@ -28,3 +28,6 @@ https://www.unixmen.com/reset-root-password-centos-7/
     top 
 9. port has been block firewall for oustide to communicate
   service firewalld stop
+10.To check the file size of the folder
+  du -Sx / | sort -nr | head -n 10
+  du -Sh / |sort -nr |head -n 10
