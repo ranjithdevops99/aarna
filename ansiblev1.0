@@ -1,0 +1,206 @@
+Prerequisites :
+
+
+
+
+
+
+
+
+Installations
+ENV1
+10.10.10.234
+OC Master
+NFS/Ansible/Tomcat/
+ENV2
+10.10.10.235
+OC Node-1
+Jenkins Master/Nexus
+ENV3
+10.10.10.236
+OC Node-2
+Jenkins Slave/tomcat 
+
+Username : root
+Password : Dr3amW0rk
+ 
+ 
+ 
+Process : 1
+Process 1: Master and Slave
+Install jenkins :
+
+https://pkg.jenkins.io/redhat-stable/
+
+Go to link and copy by using  “ wget “
+
+Install jenkins 
+
+Command :Yum install jenkins  
+ Systemctl status jenkins
+Systemctl start jenkins
+
+Install Net tools 
+yum install net-tools
+
+To check the PID
+TOP
+netstat -tulp|grep 10112
+
+To Change the port in jenkins
+/etc/sysconfig/jenkins
+
+IMP Commands used in  jenkins
+ps -ef|grep http
+netstat -tunlp|grep httpd
+ curl localhost
+ curl -s 10.10.10.235
+systemctl status firewalld
+  sestatus
+  vim /etc/sysconfig/selinux
+  vi /etc/sysconfig/selinux
+  sestatus
+  setenforce 0
+  sestatus
+  systemctl status jenkins
+  netstat -anlp|grep jenkins
+  netstat -anlp|grep ":8080"
+  ps -ef|grep 4443
+  systemctl restart jenkins
+  tail -f /var/log/jenkins/jenkins.log
+  echo 0 > /selinux/enforce
+  init 6
+systemctl status firewalld--> iptables -L--> list all the firewall rules
+ iptables -F--> remove all the existing firewall rules
+
+systemctl stop firewalld-->systemclt stop iptables
+systemctl disable firewalld-->systemclt disable iptables
+
+Debugging if  jenkins port is not accessible
+Use commands to solve : 
+To list the iptables in machine
+ iptables -L
+To flush out the iptables
+iptables -F
+ 
+
+
+
+Now We are going to launch Slave machine in jenkins :
+http://yallalabs.com/devops/how-to-add-linux-slave-node-agent-node-jenkins/  (Reference)
+
+Jenkins username :  admin
+Pwd                          : admin
+
+
+install java
+In the slave machine add jenkins use.Now we need to create a user on the agent. The Jenkins master will log into the agent as this user, and all build jobs will execute as this user. The new user will be called jenkins with /var/lib/jenkins as home directory
+
+
+  
+
+
+Generate ssh key in slave node 
+
+
+4.Add the public SSH key id_rsa.pub to the list of authorized_keys file like below:
+  
+
+5.Now go to jenkins server open manage jenkins> Nodes>New Node and configure the agent 
+  
+
+6. ” Click launch agent “ to launch node in jenkins server 
+
+
+7. Test JOB
+ 
+
+Process 2: Ansible configuration and Deployment 
+Abstract :
+Developer commits his code in github and jenkins builds the artifact using maven. Using the “publish over ssh” plugin, jenkins transfers the artifact to ansible controller and invokes a playbook which deploys the artifact to all the nodes configured in the playbook.
+ 
+ 
+Install Ansible  (Control Machine) ENV 1
+ 
+yum install epel-release -y
+Yum update -y
+ 
+ 
+Create a user 'ansible-user'  with admin privileges (in Controller and nodes) 
+Useradd ansible-user
+Passwd ansible-user
+1234
+
+Provide sudo access with no password prompt
+ 
+ 
+Now update the server name along with ip in the below path in Controller and all the nodes.
+
+ 
+Now update the 'ansible' host inventory files in the path "/etc/ansible/"
+ 
+
+ 
+ 
+ 
+Step 2:
+Now,lets  create password less SSH connection between ansible_user@server1 and ansible_user@server2 (between controller and node)
+ 
+Now switch to ansible-user
+
+ Now  execute Ssh-keygen
+
+ 
+Now ssh-copy-id to Environment2
+
+Now ssh-copy-id to Environment 3
+
+ 
+Check the connectivity of nodes from ansible controller
+
+ 
+Step 3: Now go to jenkins (Env 2)
+ 
+              Install jenkins 
+Create a project ansible-deploy
+Now go to source code management and give github credentials
+
+
+In Build step use clean package goals as mentioned below
+
+
+Install publish overssh plugin
+In jenkins ,Configure system  - update the node details in “publish over ssh”
+     
+
+
+
+
+
+In Ansible controller , create a directory with the name artifacts in the home directory of the ansible user 
+   
+ 
+Now go to build step in jenkins and add the following content as mentioned in the below image
+Add the Name , tansferset - source file,remove prefix for following steps
+
+
+
+Create a playbook name as  deploy.yml in ENV1
+
+
+IN /etc/init.d/tomcat.system  use the script for tomcat start and stop in playbook .we use this script in handlers 
+
+ 
+Build the jenkins job 
+Finally Check the Tomcat host
+  
+
+
+
+Nw,lets  create password less SSH connection between 
+
+ansible_user@server1 and ansible_user@server2 (between controller and
+ 
+ 
+Provide sudo access with no password prompt
+ 
